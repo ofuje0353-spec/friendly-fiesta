@@ -1,0 +1,6 @@
+{
+  "name": "Minna Life",
+  "version": "0.1.0",
+  "entry": "index.html",
+  "type": "static-html-canvas-game"
+}

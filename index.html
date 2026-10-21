@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#101827">
+  <title>Minna Life</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <main id="app">
+    <section id="menu" class="screen menu-screen">
+      <div class="menu-backdrop"></div>
+      <div class="menu-content">
+        <div class="brand-mark">M<span>·</span>L</div>
+        <p class="eyebrow">A NIGERIAN CITY LIFE SIMULATOR</p>
+        <h1>MINNA <span>LIFE</span></h1>
+        <p class="intro">Your city. Your choices. Your story.</p>
+        <div class="menu-actions">
+          <button class="primary" id="newGameBtn"><i data-lucide="play"></i> New Game</button>
+          <button id="continueBtn"><i data-lucide="rotate-ccw"></i> Continue Game</button>
+          <button id="loadBtn"><i data-lucide="folder-open"></i> Load Game</button>
+          <button id="settingsBtn"><i data-lucide="settings"></i> Settings</button>
+          <button id="controlsBtn"><i data-lucide="gamepad-2"></i> Controls</button>
+        </div>
+        <div class="menu-foot"><span>MINNA, NIGER STATE</span><span>LOCAL SAVE • SINGLE PLAYER</span></div>
+      </div>
+      <div class="city-silhouette" aria-hidden="true"><div class="sun"></div><div class="building b1"></div><div class="building b2"></div><div class="building b3"></div><div class="building b4"></div><div class="road"></div></div>
+    </section>
+
+    <section id="creation" class="screen modal-screen hidden">
+      <div class="panel creation-panel">
+        <button class="close-btn" id="creationClose" aria-label="Back">×</button>
+        <p class="eyebrow">YOUR STORY STARTS HERE</p><h2>Create your character</h2>
+        <label>Character name<input id="charName" maxlength="20" value="New Resident" placeholder="Enter name"></label>
+        <label>Style<select id="charStyle"><option value="blue">City blue</option><option value="gold">Street gold</option><option value="green">Market green</option><option value="purple">Night purple</option></select></label>
+        <label>Starting path<select id="charPath"><option value="explorer">Explorer — balanced start</option><option value="student">Student — extra energy</option><option value="hustler">Hustler — extra cash</option></select></label>
+        <button class="primary wide" id="startGameBtn">Enter Minna <i data-lucide="arrow-right"></i></button>
+      </div>
+    </section>
+
+    <section id="game" class="screen game-screen hidden">
+      <canvas id="world" aria-label="Minna Life game world"></canvas>
+      <header class="hud-top">
+        <div class="player-chip"><div class="avatar" id="avatar">R</div><div><strong id="hudName">Resident</strong><small id="hudLocation">Central Minna</small></div></div>
+        <div class="money-chip"><i data-lucide="wallet"></i><strong id="money">₦2,500</strong></div>
+        <div class="time-chip"><i data-lucide="sun"></i><span id="clock">Day 1 · 08:00</span></div>
+        <button class="icon-btn" id="pauseBtn" aria-label="Pause"><i data-lucide="pause"></i></button>
+      </header>
+      <aside class="status-panel">
+        <div class="stat"><span>❤ Health</span><div class="bar"><i id="healthBar" style="width:100%"></i></div></div>
+        <div class="stat"><span>🍲 Hunger</span><div class="bar hunger"><i id="hungerBar" style="width:20%"></i></div></div>
+        <div class="stat"><span>⚡ Energy</span><div class="bar energy"><i id="energyBar" style="width:85%"></i></div></div>
+        <div class="stat"><span>✨ Mood</span><div class="bar mood"><i id="moodBar" style="width:75%"></i></div></div>
+      </aside>
+      <div class="quest-card"><small>ACTIVE TASK</small><strong id="questTitle">Welcome to Minna</strong><span id="questText">Meet a resident and explore the city.</span></div>
+      <div class="interaction-hint" id="interactionHint">Move around and explore</div>
+      <div class="bottom-actions">
+        <button id="interactBtn" class="action-main"><i data-lucide="hand"></i><span>Interact</span></button>
+        <button id="inventoryBtn"><i data-lucide="backpack"></i><span>Bag</span></button>
+        <button id="mapBtn"><i data-lucide="map"></i><span>Map</span></button>
+        <button id="jobsBtn"><i data-lucide="briefcase-business"></i><span>Jobs</span></button>
+        <button id="saveBtn"><i data-lucide="save"></i><span>Save</span></button>
+      </div>
+      <div class="mobile-controls" id="mobileControls">
+        <div class="joystick" id="joystick"><div class="stick" id="stick"></div></div>
+        <button id="runBtn" class="run-button">RUN</button>
+      </div>
+    </section>
+
+    <section id="overlay" class="screen modal-screen hidden">
+      <div class="panel overlay-panel">
+        <button class="close-btn" id="overlayClose" aria-label="Close">×</button>
+        <div id="overlayContent"></div>
+      </div>
+    </section>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </main>
+  <script src="js/config.js"></script><script src="js/save.js"></script><script src="js/world.js"></script><script src="js/player.js"></script><script src="js/economy.js"></script><script src="js/npc.js"></script><script src="js/ui.js"></script><script src="js/main.js"></script>
+  <script>if(window.lucide) lucide.createIcons();</script>
+</body>
+</html>
